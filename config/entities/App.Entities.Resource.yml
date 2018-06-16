@@ -1,0 +1,19 @@
+App\Entities\Resource:
+  type: entity
+  table: resourse
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    links:
+      type: simple_array
+    generate:
+      type: string
+    name:
+      type: string
+  oneToMany:
+    accesses:
+      targetEntity: App\Entities\Access
+      mappedBy: resource

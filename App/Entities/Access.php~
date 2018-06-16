@@ -1,0 +1,112 @@
+<?php
+
+namespace App\Entities;
+
+/**
+ * Access
+ */
+class Access
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var string
+     */
+    private $ip;
+
+    /**
+     * @var \App\Entities\Resource
+     */
+    private $resource;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set password.
+     *
+     * @param string $password
+     *
+     * @return Access
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password.
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set ip.
+     *
+     * @param string $ip
+     *
+     * @return Access
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * Get ip.
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * Set resource.
+     *
+     * @param \App\Entities\Resource|null $resource
+     *
+     * @return Access
+     */
+    public function setResource(\App\Entities\Resource $resource = null)
+    {
+        $this->resource = $resource;
+
+        return $this;
+    }
+
+    /**
+     * Get resource.
+     *
+     * @return \App\Entities\Resource|null
+     */
+    public function getResource()
+    {
+        return $this->resource;
+    }
+}

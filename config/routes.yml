@@ -1,0 +1,16 @@
+admin:
+    path:     /admin
+    defaults: { _controller: 'Admin::view' }
+admin_post:
+    path:     /admin/postLink
+    defaults: { _controller: 'Admin::postLink' }
+
+access_1:
+    path:     /access/1/{generate}
+    defaults: { _controller: 'User::stepOne' }
+access_2:
+    path:     /access/2
+    defaults: { _controller: 'User::stepTwo' }
+stream:
+    path:     /stream
+    defaults: { _controller: 'User::stream' }

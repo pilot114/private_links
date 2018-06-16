@@ -1,0 +1,22 @@
+{
+    "name": "root/private_links",
+    "authors": [
+        {
+            "name": "pilot114",
+            "email": "pilot114@bk.ru"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.6",
+        "symfony/http-foundation": "^4.1",
+        "symfony/yaml": "^4.1",
+        "swiftmailer/swiftmailer": "^6.0",
+        "twig/twig": "^2.0",
+        "sensio/framework-extra-bundle": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    }
+}

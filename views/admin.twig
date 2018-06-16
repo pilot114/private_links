@@ -1,0 +1,18 @@
+
+<h1>Администрирование закрытых ресурсов</h1>
+<b>Список текущих ресурсов</b>
+
+<ul>
+    {% for resource in resources %}
+        <li>
+            <a href="/access/1/{{ resource.getGenerate }}" target="_blank"> {{ resource.getName }} </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<form action="/admin/postLink" method="post">
+    <input type="text" name="name" placeholder="Название">
+    <br>
+    <input type="text" name="link" placeholder="Ссылка на файл">
+    <input type="submit" value="Добавить">
+</form>

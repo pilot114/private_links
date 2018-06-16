@@ -1,0 +1,18 @@
+App\Entities\Access:
+  type: entity
+  table: access
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    password:
+      type: string
+      nullable: true
+    ip:
+      type: string
+  manyToOne:
+    resource:
+      targetEntity: App\Entities\Resource
+      inversedBy: accesses
