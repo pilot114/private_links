@@ -86,7 +86,7 @@ class User extends BaseController
             if ($password == $access->getPassword()) {
                 // логинимся
                 $this->startSession();
-                $this->user->set('access', $access);
+                $this->user->set('links', $access->getResource()->getLinks());
                 return new RedirectResponse($this->request->getBaseUrl() . '/stream');
             } else {
                 $this->errorResponse('Неверный код доступа');
@@ -101,6 +101,14 @@ class User extends BaseController
     // просмотр видео по ссылкам из сессии
     public function stream()
     {
-        return new Response('видео');
+        $this->startSession();
+        $links = $this->user->get('links');
+        if (!$links) {
+            return new RedirectResponse($this->request->getBaseUrl() . '/access/2');
+        }
+
+        return $this->render('player.twig', [
+            'links' => $links
+        ]);
     }
 }

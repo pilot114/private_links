@@ -8,6 +8,8 @@
 
 <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
 
+<b>тут некоторый текст, превью товаров</b>
+
 <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
     {# идентификатор магазина #}
     <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1528376697925">
@@ -22,3 +24,6 @@
     <input class="tinkoffPayRow" type="text" placeholder="Контактный телефон" name="phone">
     <input class="tinkoffPayRow" type="submit" value="Оплатить">
 </form>
+
+
+<a href="/stream"> видео (сюда можно попасть только после успешного платежа) </a>
