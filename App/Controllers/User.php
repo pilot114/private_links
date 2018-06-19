@@ -101,10 +101,18 @@ class User extends BaseController
     // просмотр видео по ссылкам из сессии
     public function stream()
     {
-        $this->startSession();
-        $links = $this->user->get('links');
-        if (!$links) {
-            return new RedirectResponse($this->request->getBaseUrl() . '/access/2');
+//        $this->startSession();
+//        $links = $this->user->get('links');
+//        if (!$links) {
+//            return new RedirectResponse($this->request->getBaseUrl() . '/access/2');
+//        }
+
+        $resources = $this->db()->getRepository(':Resource')->findAll();
+        $links = [];
+        foreach ($resources as $resource) {
+            foreach ($resource->getLinks() as $link) {
+                $links[] = $link;
+            }
         }
 
         return $this->render('player.twig', [
