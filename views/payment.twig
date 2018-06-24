@@ -1,14 +1,22 @@
-<style>
-    .tinkoffPayRow {
-        display:block;
-        margin:1%;
-        width:160px;
-    }
-</style>
+{% extends "base.twig" %}
 
-<script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+{% block style %}
+    <style>
+        .tinkoffPayRow {
+            display:block;
+            margin:1%;
+            width:160px;
+        }
+    </style>
+{% endblock %}
 
-<b>тут некоторый текст, превью товаров</b>
+{% block js %}
+    <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<b>тут некоторый текст, превью товаров (видео)</b>
 
 <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
     {# идентификатор магазина #}
@@ -18,12 +26,24 @@
     <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order">
     <input class="tinkoffPayRow" type="hidden" placeholder="Описание заказа" name="description">
 
-    <input class="tinkoffPayRow" type="text" placeholder="Сумма заказа" name="amount" required>
-    <input class="tinkoffPayRow" type="text" placeholder="E-mail" name="email" required>
-    <input class="tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="name">
-    <input class="tinkoffPayRow" type="text" placeholder="Контактный телефон" name="phone">
-    <input class="tinkoffPayRow" type="submit" value="Оплатить">
+    <div class="form-group">
+        <input class="form-control tinkoffPayRow" type="text" placeholder="Сумма заказа" name="amount" required>
+    </div>
+    <div class="form-group">
+        <input class="form-control tinkoffPayRow" type="email" placeholder="E-mail" name="email" required>
+    </div>
+    <div class="form-group">
+        <input class="form-control tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="name">
+    </div>
+    <div class="form-group">
+        <input class="form-control tinkoffPayRow" type="text" placeholder="Контактный телефон" name="phone">
+    </div>
+    <div class="form-group">
+        <input class="form-control tinkoffPayRow" type="submit" value="Оплатить">
+    </div>
 </form>
 
 
-<a href="/stream"> видео (сюда можно попасть только после успешного платежа) </a>
+<a href="/stream"> видео (в дальнейшем сюда можно попасть только после успешного платежа) </a>
+
+{% endblock %}

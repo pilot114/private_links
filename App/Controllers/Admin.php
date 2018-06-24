@@ -11,21 +11,24 @@ class Admin extends BaseController
     {
         $resources = $this->db()->getRepository(':Resource')->findAll();
 
+        $files = array_diff(scandir($this->config['root_dir'] . '/public/conf'), ['.', '..']);
+
         return $this->render('admin.twig', [
-            'resources' => $resources
+            'files' => $files,
+            'resources' => $resources,
         ]);
     }
 
     public function postLink()
     {
-        $link = $this->getParam('link');
+        $links = $this->getParam('links');
         $name = $this->getParam('name');
 
         $generate = bin2hex(random_bytes(6));
 
         $res = new Resource();
         $res
-            ->setLinks([$link])
+            ->setLinks($links)
             ->setGenerate($generate)
             ->setName($name);
 
@@ -33,11 +36,6 @@ class Admin extends BaseController
         $em->persist($res);
         $em->flush();
 
-//        $accessLink = $this->request->getBaseUrl() . '/access/1/' . $generate;
-
         return new RedirectResponse('/admin');
-//        return $this->successResponse([
-//            'link' => $accessLink
-//        ]);
     }
 }

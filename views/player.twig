@@ -1,7 +1,10 @@
+{% extends "base.twig" %}
+
+{% block content %}
 {% for link in links %}
     <video controls width="660" height="500">
-        <source src="{{ link }}" type="video/mp4">
+        <source src="/conf/{{ link }}" type="video/mp4">
     </video>
 {% endfor %}
 
-
+{% endblock %}

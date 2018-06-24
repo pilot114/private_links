@@ -7,3 +7,5 @@
 
 https://oplata.tinkoff.ru/landing/develop/documentation
 >Success URL - URL на веб-сайте продавца, куда будет переведен покупатель в случае успешной оплаты (настраивается в Личном кабинете).
+
+    apt-get install ffmpeg
