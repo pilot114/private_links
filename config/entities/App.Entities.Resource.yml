@@ -13,6 +13,10 @@ App\Entities\Resource:
       type: string
     name:
       type: string
+    description:
+      type: string
+    sum:
+      type: integer
   oneToMany:
     accesses:
       targetEntity: App\Entities\Access

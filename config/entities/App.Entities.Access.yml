@@ -10,8 +10,13 @@ App\Entities\Access:
     password:
       type: string
       nullable: true
+    email:
+      type: string
+      nullable: true
     ip:
       type: string
+    payment:
+      type: boolean
   manyToOne:
     resource:
       targetEntity: App\Entities\Resource

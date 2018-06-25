@@ -28,6 +28,16 @@ class Resource
     private $accesses;
 
     /**
+     * @var int
+     */
+    private $sum;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -156,5 +166,53 @@ class Resource
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set sum.
+     *
+     * @param int $sum
+     *
+     * @return Resource
+     */
+    public function setSum($sum)
+    {
+        $this->sum = $sum;
+
+        return $this;
+    }
+
+    /**
+     * Get sum.
+     *
+     * @return int
+     */
+    public function getSum()
+    {
+        return $this->sum;
+    }
+
+    /**
+     * Set description.
+     *
+     * @param string $description
+     *
+     * @return Resource
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

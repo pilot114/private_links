@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Entities\Resource;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class Admin extends BaseController
 {
@@ -23,6 +24,12 @@ class Admin extends BaseController
     {
         $links = $this->getParam('links');
         $name = $this->getParam('name');
+        $description = $this->getParam('description');
+        $sum = $this->getParam('sum');
+
+        if (!$links || !$name || !$sum) {
+            return new Response('Не все параметры заданы');
+        }
 
         $generate = bin2hex(random_bytes(6));
 
@@ -30,7 +37,9 @@ class Admin extends BaseController
         $res
             ->setLinks($links)
             ->setGenerate($generate)
-            ->setName($name);
+            ->setName($name)
+            ->setSum($sum)
+            ->setDescription($description);
 
         $em = $this->db();
         $em->persist($res);

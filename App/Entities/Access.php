@@ -27,6 +27,15 @@ class Access
      */
     private $resource;
 
+    /**
+     * @var bool
+     */
+    private $payment;
+
+    /**
+     * @var string|null
+     */
+    private $email;
 
     /**
      * Get id.
@@ -108,5 +117,53 @@ class Access
     public function getResource()
     {
         return $this->resource;
+    }
+
+    /**
+     * Set payment.
+     *
+     * @param bool $payment
+     *
+     * @return Access
+     */
+    public function setPayment($payment)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment.
+     *
+     * @return bool
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Set email.
+     *
+     * @param string|null $email
+     *
+     * @return Access
+     */
+    public function setEmail($email = null)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email.
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

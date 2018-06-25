@@ -54,7 +54,8 @@ class User extends BaseController
         } else {
             $access = (new Access())
                 ->setIp($ip)
-                ->setResource($res);
+                ->setResource($res)
+                ->setPayment(false);
 
             $em->persist($access);
             $em->flush();
@@ -63,7 +64,7 @@ class User extends BaseController
         // на этом этапе у нас есть access, пока без пароля
         return $this->render('payment.twig', [
             'ip' => $ip,
-            'links' => $res->getLinks(),
+            'res' => $res,
         ]);
     }
 

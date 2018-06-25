@@ -5,7 +5,11 @@
         .tinkoffPayRow {
             display:block;
             margin:1%;
-            width:160px;
+            width:320px;
+        }
+        .container {
+            width: 400px;
+           .center-block();
         }
     </style>
 {% endblock %}
@@ -16,7 +20,10 @@
 
 
 {% block content %}
-<b>тут некоторый текст, превью товаров (видео)</b>
+<h1>{{ res.getName }}</h1>
+<p>
+    {{ res.getDescription }}
+</p>
 
 <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
     {# идентификатор магазина #}
@@ -27,7 +34,7 @@
     <input class="tinkoffPayRow" type="hidden" placeholder="Описание заказа" name="description">
 
     <div class="form-group">
-        <input class="form-control tinkoffPayRow" type="text" placeholder="Сумма заказа" name="amount" required>
+        <input class="form-control tinkoffPayRow" type="text" placeholder="Сумма заказа" name="amount" required value="{{ res.getSum }}">
     </div>
     <div class="form-group">
         <input class="form-control tinkoffPayRow" type="email" placeholder="E-mail" name="email" required>

@@ -39,9 +39,9 @@ class BaseController
         return new JsonResponse(['result' => null, 'error' => $errMessage]);
     }
 
-    public function getParam($key)
+    public function getParam($key, $default = null)
     {
-        return $this->request->request->get($key);
+        return $this->request->request->get($key, $default);
     }
 
     public function startSession()

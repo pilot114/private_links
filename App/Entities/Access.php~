@@ -27,6 +27,10 @@ class Access
      */
     private $resource;
 
+    /**
+     * @var bool
+     */
+    private $payment;
 
     /**
      * Get id.
@@ -108,5 +112,29 @@ class Access
     public function getResource()
     {
         return $this->resource;
+    }
+
+    /**
+     * Set payment.
+     *
+     * @param bool $payment
+     *
+     * @return Access
+     */
+    public function setPayment($payment)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment.
+     *
+     * @return bool
+     */
+    public function isPayment()
+    {
+        return $this->payment;
     }
 }

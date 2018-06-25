@@ -11,7 +11,7 @@
                 $('#countLinksInResource').text( function(i, oldval) {
                     return parseInt(oldval, 10) + 1;
                 });
-                var fileName = el.parent().find('a').text();
+                let fileName = el.parent().find('a').text();
                 // add to form
                 $('#form').append('<input type="hidden" name="links[]" value="'+fileName+'" />');
                 $(el.remove());
@@ -39,16 +39,34 @@
 <ul class="list-group list-group-flush">
     {% for resource in resources %}
         <li class="list-group-item">
-            <a href="/access/1/{{ resource.getGenerate }}" target="_blank"> {{ resource.getName }} </a>
+            <h4>
+                <a href="/access/1/{{ resource.getGenerate }}" target="_blank"> {{ resource.getName }} ({{ resource.getSum }} &#8381;)</a>
+            </h4>
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">IP</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Оплачен</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for access in resource.getAccesses %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ access.getIp }}</td>
+                        <td>{{ access.getEmail }}</td>
+                        <td>{{ access.getPayment ? 'Да' : 'Нет' }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </li>
     {% endfor %}
 </ul>
 
 <form class="form" action="/admin/postLink" method="post" id="form">
-
-    <div class="form-group">
-        <textarea class="form-control" rows="5" name="text"></textarea>
-    </div>
 
     <div class="form-group sm-6">
         <b>Ссылок в ресурсе:</b>
@@ -56,6 +74,9 @@
     </div>
     <div class="form-group sm-6">
         <input type="text" class="form-control" name="name" placeholder="Название">
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" rows="5" name="description" placeholder="Описание (опционально)"></textarea>
     </div>
     <div class="form-group sm-6">
         <input type="text" class="form-control" name="sum" placeholder="Сумма оплаты">
